@@ -16,14 +16,14 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/vapor/fluent-kit.git", from: "1.47.2"),
-        .package(url: "https://github.com/WebSubKit/SubscriberKit.git", revision: "f5e06e6")
+        .package(url: "https://github.com/WebSubKit/SubscriberKit.git", revision: "8bc44e1")
     ],
     targets: [
         .target(
             name: "SubscriberFluent",
             dependencies: [
                 .product(name: "FluentKit", package: "fluent-kit"),
-                .product(name: "SubscriberKit", package: "SubscriberKit"),
+                .product(name: "SubscriberKit", package: "SubscriberKit")
             ]
         )
     ]
