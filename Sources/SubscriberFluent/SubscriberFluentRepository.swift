@@ -55,6 +55,10 @@ extension SubscriberFluentRepository {
         return try await findSubscriptions(topic: topic)
     }
     
+    public func subscriptions() async throws -> [Subscription] {
+        return try await findAllSubscriptions()
+    }
+    
 }
 
 
@@ -119,6 +123,13 @@ extension SubscriberFluentRepository {
             .with(\.$rHubs)
             .with(\.$rStatuses)
             .filter(\.$rTopic, .equal, topicURLString)
+            .all()
+    }
+    
+    fileprivate func findAllSubscriptions() async throws -> [SubscriptionModel] {
+        return try await SubscriptionModel.query(on: fluentDatabase)
+            .with(\.$rHubs)
+            .with(\.$rStatuses)
             .all()
     }
     
